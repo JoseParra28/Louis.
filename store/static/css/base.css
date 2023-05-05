@@ -12,9 +12,6 @@ body {
     height: calc(100vh - 164px);
     color: var(--font-color);
     font-weight: 100;
-    background-color: red;
+    
 }
-span {
-    margin-left: 2%;
-    font-family: 'Courier New', Courier, monospace;
-}
+
