@@ -6,7 +6,7 @@ html {
     height: 100%;
 }
 body {
-    background-image: url(/media/hero-img-2.jpg);
+    /* background-image: url(/media/hero-img-2.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - 164px);
