@@ -22,4 +22,7 @@ def product_info(request, slug):
 
 
 
-
+def category_list(request, category_slug=None):
+    category = get_object_or_404(Category, slug=category_slug)
+    products  = Product.objects.filter(category=category)
+    return render(request, 'store/category-list.html', {'category': category, 'products': products})
