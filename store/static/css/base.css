@@ -22,9 +22,10 @@ h3, h5 {
     height: 100%;
     text-align: center;
 }
-.btn{
-    background-color: black;
-    width: 40%;
+.submit-btn{
+   background-color: black;
+   
+   
 }
 
 
