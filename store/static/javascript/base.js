@@ -11,6 +11,7 @@ $(document).on('click', '#add-button', function(e){
             action: 'post'
         },
         success: function(json){
+            console.log(json)
 
         },
         error : function (xhr, errmsg, err){
