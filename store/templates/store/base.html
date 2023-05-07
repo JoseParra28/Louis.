@@ -41,120 +41,58 @@
         {% endblock %}
         <title>Louis {% block extra_tittle %} {% endblock %}</title>
       </head>
+     <header>
 
     <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
-
-
-        <a class="navbar-brand main-heading text-white" href="{% url 'store' %}"> 
-                
-        &nbsp; &nbsp; Louis 
-        
-        </a>
-
-
-        <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-
-        <span class="navbar-toggler-icon"></span>
-
+    <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">&nbsp; &nbsp; Louis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
     </button>
-
-    
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-                
+        <div class="collapse navbar-collapse" id="navbarCollapse">        
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-
-                <li class="nav-item dropdown">
-                    
+                <li class="nav-item dropdown">            
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    
-                        Categories
-                    
-                    </a>
-                    
+                    data-bs-toggle="dropdown" aria-expanded="false">Products</a>                    
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li>
-                            
-                            <a class="dropdown-item" href="{% url 'store' %}"> all </a>
-
-
-                        
-                        </li>
-                    
+                        <li>                            
+                            <a class="dropdown-item" href="{% url 'store' %}"> all </a>                        
+                        </li>                    
                         {% for category in all_categories %}
-
                         <a class="dropdown-item" href="{{ category.get_absolute_url }}"> {{ category.name | capfirst }} </a>
-
-                        {% endfor %}
-                    
+                        {% endfor %}                   
                     </ul>
-
                 </li>
-
             </ul>
-
         </div>
-
-
-        <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-            
+        
+        <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">            
             <ul class="navbar-nav ms-auto">
-
-
-                <li class="nav-item">
-            
+                <li class="nav-item">            
                     <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'register' %}"> Register </a>
-
                 </li>
-
-
                 <li class="nav-item">
-
                     <a class="btn btn-alert navbar-btn text-white" type="button"  href="/"> Login </a>
-
                 </li>
-
-
                 &nbsp; &nbsp; &nbsp;
-
-
                 <li class="nav-item">
-
                     <a type="button" role="button" href="{% url 'cart-summary' %}" class="btn btn-outline-secondary"> 
-                    
-
-
                         <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
-
-
                     </a>
-
                 </li>
-
                 &nbsp; &nbsp; &nbsp;
-        
-
-            </ul>
-
-        
+            </ul>        
         </div>
-
-
     </nav>
-
-
+    <div id="delivery-banner" class="row text-center">
+        <div class="col bg-black text-white">
+            <h4 class="logo-font my-1">Free delivery on orders over 100€!</h4>                
+        </div>            
+    </div>
+</header>
     <body>
 
 
-        {% block content %} 
+ {% block content %} 
         
         
 
@@ -163,18 +101,18 @@
 
 
             
-        {% endblock %}
+{% endblock %}
 
-        {% block postloadjs %}
+{% block postloadjs %}
 
-        <script src="{% static 'javascript/base.js' %}"></script>
+<script src="{% static 'javascript/base.js' %}"></script>
     
-        {% endblock %}
+{% endblock %}
     
         
 
 
-    </body>
+</body>
 
 
 </html>

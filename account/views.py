@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
+from django.contrib import messages
+
 
 
 def register(request):
@@ -50,7 +52,7 @@ def email_verification(request, uidb64, token):
 
 # Verification sent
 def email_verification_sent(request):
-    return render(request, 'account/registration/email-verification-sent.html')
+    return render(request, 'account/email-verification-sent.html')
 
 # Verification successful
 def email_verification_success(request):
