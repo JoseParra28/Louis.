@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def register(request):
-    return HttpResponse('Account url set up now')
+    return render(request, 'account/registration/register.html')
