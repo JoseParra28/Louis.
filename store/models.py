@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 
@@ -35,3 +36,32 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('product-info', args=[self.slug])    
+
+
+
+class Comment(models.Model):
+    STATUS = (
+        ('New', 'New'),
+        ('True', 'True'),
+        ('False', 'False'),
+    )
+    name = models.CharField(max_length=50)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=50, blank=True)
+    comment = models.CharField(max_length=150, blank=True)
+    rate = models.IntegerField(default=1)
+    ip = models.CharField(max_length=20, blank=True)
+    status = models.CharField(max_length=20, blank=True, default='New')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.subject
+        
+        class CommentForm(models.Model):
+            class Meta:
+                model = Comment
+                fields = ['subject', 'comment', 'rate']
+
+
+
