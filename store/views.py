@@ -29,5 +29,6 @@ def category_list(request, category_slug=None):
     return render(request, 'store/category-list.html', {'category': category, 'products': products})
 
 
-def add_comment(request):
-    return HttpResponse("add comment")  
+def add_review(request):
+   
+    return render(request, 'store/add-review.html')

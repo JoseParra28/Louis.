@@ -18,7 +18,9 @@ h3, h4, h5 {
 }
 #delivery-banner {
   position: relative;
- 
+}
+strong {
+    color: var(--background-color);
 }
 .navbar-brand {
     font-size: 2rem;
