@@ -40,23 +40,15 @@ class Product(models.Model):
 
 
 class Comment(models.Model):
-    STATUS = (
-        ('New', 'New'),
-        ('True', 'True'),
-        ('False', 'False'),
-    )
     name = models.CharField(max_length=50)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE)
     subject = models.CharField(max_length=50, blank=True)
-    comment = models.CharField(max_length=150, blank=True)
+    comment = models.TextField(max_length=150, blank=True)
     rate = models.IntegerField(default=1)
-    ip = models.CharField(max_length=20, blank=True)
-    status = models.CharField(max_length=20, blank=True, default='New')
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.subject
+        return self.name
         
         class CommentForm(models.Model):
             class Meta:

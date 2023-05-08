@@ -7,4 +7,6 @@ urlpatterns = [
     path('product/<slug:slug>/', views.product_info, name='product-info'),
       # Dinamic links for each category
     path('search/<slug:category_slug>/', views.category_list, name='category-list'),
+      # Comments url
+    path('add-comment/', views.add_comment, name='add-comment'),
 ]

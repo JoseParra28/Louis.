@@ -32,10 +32,7 @@ class CommentAdmin(admin.ModelAdmin):
         'subject',
         'comment',
         'rate',
-        'ip',
-        'status',
         'created',
-        'updated',
     )
 
 admin.site.register(Comment, CommentAdmin)

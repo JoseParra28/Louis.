@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Category, Product
+from .models import Category, Product, Comment
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 
 
@@ -26,3 +27,7 @@ def category_list(request, category_slug=None):
     category = get_object_or_404(Category, slug=category_slug)
     products  = Product.objects.filter(category=category)
     return render(request, 'store/category-list.html', {'category': category, 'products': products})
+
+
+def add_comment(request):
+    return HttpResponse("add comment")  
