@@ -8,7 +8,7 @@
 
     <!-- Introduction section -->
   
-    <section class="py-4 text-center container">
+    <section class="py-4 text-center container section-img">
       <div class="img-div">
         <div class="img-1"></div>
         <div class="img-2"></div>
@@ -17,7 +17,7 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h4> Simplicity at it's finest. </h4>
                 <br>
-                <p class="lead text-muted"> Don't have an account us yet?</p>
+                <p class="lead "> Don't have an account us yet?</p>
                 <br>
                 <a href="" class="btn btn-primary my-2"> Create an account </a>  
             </div>       
@@ -33,7 +33,10 @@
       <div class="products">
       <ul >                  
         {% for category in all_categories %}
-        <a  href="{{ category.get_absolute_url }}"> {{ category.name | capfirst }} </a>
+        <li>
+          <a  href="{{ category.get_absolute_url }}"> {{ category.name | capfirst }} </a>
+        </li>
+      
         {% endfor %}                   
     </ul>
   </div>

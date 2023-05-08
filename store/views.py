@@ -54,7 +54,7 @@ def edit_review(request, itemm_id):
         # return redirect('store')
     form = ReviewForm(instance=item)
     ctx = {'form': form}    
-    return render(request, 'food/edit.html', ctx) 
+    return render(request, 'store/add-review.html', ctx) 
 
 def delete_item(request, itemm_id):
     item = get_object_or_404(Itemm, id=itemm_id)
