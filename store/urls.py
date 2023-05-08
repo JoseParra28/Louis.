@@ -8,5 +8,5 @@ urlpatterns = [
       # Dinamic links for each category
     path('search/<slug:category_slug>/', views.category_list, name='category-list'),
       # Comments url
-    path('add-review/', views.add_review, name='add-review'),
+    path('add-review', views.add_review, name='add-review'),
 ]
