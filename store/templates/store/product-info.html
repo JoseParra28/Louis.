@@ -102,14 +102,15 @@
 <br>
 <div class="col-md-6 reviews">
     <h1>Reviews</h1>
-    <hr>
+    <h5><a href="{% url 'add-review' %}">Add a review</a></h5>
+<br>
+<hr>
 {% if not product.comments.all %}
 <h3>No reviews yet</h3>
 <a href="">Add a review</a>
 
 {% else %}
-<h5><a href="{% url 'add-review' %}">Add a review</a></h5>
-<br>
+
    {% for comment in product.comments.all %}
    <strong><h4>{{ comment.name }} </h4></strong>
    <h6><strong> {{ comment.created }}</strong></h6>
@@ -124,5 +125,5 @@
 {% endif %}
 </div>
 <hr>
-<br>
+
 {% endblock %}

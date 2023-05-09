@@ -31,3 +31,8 @@ def cart_delete(request):
 
 def cart_update(request):
     pass
+
+
+
+def checkout(request):
+	return render(request, 'cart/checkout.html')  
