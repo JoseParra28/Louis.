@@ -50,7 +50,7 @@
                     Update                  
                   </button>                  
                   &nbsp;
-                  <button type="button" id="delete-button"
+                  <button type="button" 
                     class="btn btn-danger btn-sm delete-button">
                     Delete        
                   </button>
@@ -69,5 +69,11 @@
       </div>
     </div>
  </main>
+{% endblock %}
+
+{% block postloadjs %}
+
+<script src="{% static 'javascript/base.js' %}"></script>
+    
 {% endblock %}
 
