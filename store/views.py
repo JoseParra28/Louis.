@@ -12,6 +12,16 @@ def store(request):
     return render(request, 'store/store.html', context)
 
 
+def cart(request):
+	context = {}
+	return render(request, 'store/cart.html', context)
+
+
+def checkout(request):
+	context = {}
+	return render(request, 'store/checkout.html', context)    
+
+
 def categories(request):
     all_categories = Category.objects.all() 
     return {'all_categories': all_categories}

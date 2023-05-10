@@ -54,7 +54,7 @@
                             <div class="col-6">
               
                                
-                                <label for="select">Qty</label>
+                                <label for="select">Size</label>
                                 
                                 &nbsp; 
                                
@@ -74,11 +74,10 @@
 
                             <div class="col-6 text-end">
                                 
-                                <button type="button" id="add-button" value="{{ product.id }}" class="btn btn-secondary btn-sm">
-                        
-                                Add to cart 
-                            
-                                </button> 
+                               
+                                <button data-product="{{product.id}}" data-action="add" class="btn btn-dark add-btn update-cart">Add to Cart</button>
+				
+                                <a class="btn btn-outline-dark" href="#">View</a>
                             
 
                             </div>

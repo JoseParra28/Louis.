@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'store',
-    'cart',
     'crispy_forms',
 ]
 
@@ -81,7 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories', #context across all templates
-                'cart.context_processors.cart', # session handeler for the shopping cart
+                
                 
             ],
         },
