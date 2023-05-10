@@ -58,6 +58,20 @@ class Order(models.Model):
 
 	def __str__(self):
 		return str(self.id)
+
+        
+@property
+def get_cart_total(self):
+		orderitems = self.orderitem_set.all()
+		total = sum([item.get_total for item in orderitems])
+		return total 
+
+@property
+def get_cart_items(self):
+		orderitems = self.orderitem_set.all()
+		total = sum([item.quantity for item in orderitems])
+		return total         
+        
 		
 
 # ---------------------------------Order of each item model
@@ -66,6 +80,12 @@ class OrderItem(models.Model):
 	order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
 	quantity = models.IntegerField(default=0, null=True, blank=True)
 	date_added = models.DateTimeField(auto_now_add=True)
+
+
+	@property
+	def get_total(self):
+		total = self.product.price * self.quantity
+		return total     
 
 # --------------------------------- Shipping model
 class ShippingAddress(models.Model):
@@ -79,6 +99,7 @@ class ShippingAddress(models.Model):
 
 	def __str__(self):
 		return self.address
+
 
 
 
