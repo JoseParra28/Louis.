@@ -7,8 +7,8 @@ from .forms import ReviewForm
 
 
 def store(request):
-    all_products = Product.objects.all()
-    context = {'all_products': all_products}
+    products = Product.objects.all()
+    context = {'products': products}
     return render(request, 'store/store.html', context)
 
 

@@ -41,7 +41,7 @@
     </ul>
   </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
-        {% for product in all_products %}
+        {% for product in products %}
         <div class="col">
           <div class="card shadow-sm">
             <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
@@ -52,8 +52,7 @@
                 <a class="text-info text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.name | capfirst }}</a>
               </p>
               <div class="d-flex justify-content-between align-items-center">
-                <h5> € {{ product.price }} </h5>
-                <!-- <a class="text-info text-decoration-none" href="{% url 'product-info' product.slug %}"> product</a> -->
+                <h5> € {{ product.price|floatformat:2 }} </h5>
               </div>
             </div>
           </div>        
