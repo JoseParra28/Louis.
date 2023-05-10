@@ -1,40 +1,13 @@
 from django.contrib import admin
-from .models import Product, Category, Comment
+from .models import *
 
 
-class CategoryAdmin(admin.ModelAdmin):
-     list_display = (
-         'name',
-        'slug',
-    )
-
-
-admin.site.register(Category, CategoryAdmin)
-
-
-class ProductAdmin(admin.ModelAdmin):
-    list_display = (
-        'tittle',
-        'category',
-        'price',
-        'description',
-        'image',
-        'slug',
-    )
-
-admin.site.register(Product, ProductAdmin)
-
-
-class CommentAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'product',
-        'subject',
-        'comment',
-        'rate',
-        'created',
-    )
-
-admin.site.register(Comment, CommentAdmin)
+admin.site.register(Customer)
+admin.site.register(Product)
+admin.site.register(Category)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(ShippingAddress)
+admin.site.register(Comment)
 
 
