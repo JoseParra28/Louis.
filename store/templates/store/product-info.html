@@ -27,14 +27,11 @@
                     <div class="col">
                         <div class="row p-3">
                             <div class="col-6">
-                                <label for="select">Size</label>
-                                &nbsp; 
-                                <select id="select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
+                                <div class="quantity">
+                                    <p><strong>Quantity</strong></p>
+                                    <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+                                    <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+                                </div>
                             </div>
                             <div class="col-6 text-end">
                                 <button data-product="{{product.id}}" data-action="add" class="btn btn-dark add-btn update-cart">Add to Cart</button>
