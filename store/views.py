@@ -1,16 +1,19 @@
-from django.shortcuts import render
 from .models import *
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from .forms import ReviewForm
-from django.http import JsonResponse
-import json
-import datetime
+from .models import *
+from django.shortcuts import get_object_or_404, render, reverse
+from django.http import HttpResponse
+from .forms import ReviewForm
+from django.contrib import messages
+from django.db.models import Q
 
 
 # --------------------- Main store view
 def store(request):
 	all_products  = Product.objects.all()
+
+    
 	context = {'all_products': all_products}
 	return render(request, 'store/store.html', context)
     

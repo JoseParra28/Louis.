@@ -14,6 +14,13 @@
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
                 <h1 class="mb-0 h4">{{ product.name | capfirst }}</h1>
                 <strong>{{ product.slug }}</strong>
+               <p>
+                {% if product.rating %}
+                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+            {% else %}
+                <small class="text-muted">No Rating</small>
+            {% endif %}
+               </p>
                 <hr>
                 <br>
                 <p>{{ product.description }}</p>
