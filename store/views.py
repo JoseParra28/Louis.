@@ -10,9 +10,9 @@ import datetime
 
 # --------------------- Main store view
 def store(request):
-    products = Product.objects.all()
-    context = {}
-    return render(request, 'store/store.html', context)
+	all_products  = Product.objects.all()
+	context = {'all_products': all_products}
+	return render(request, 'store/store.html', context)
     
 
 
