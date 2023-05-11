@@ -34,6 +34,9 @@
         {% endblock %}
     
         {% block extra_js %}
+        <script type="text/javascript">
+            let user = '{{ request.user }}'
+        </script>
         {% endblock %}
         <title>Louis {% block extra_tittle %} {% endblock %}</title>
       </head>

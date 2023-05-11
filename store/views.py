@@ -3,6 +3,7 @@ from .models import *
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from .forms import ReviewForm
+from django.http import JsonResponse
 
 
 
@@ -34,6 +35,11 @@ def checkout(request):
          order = {'get_cart_total':0, 'get_cart_items':0,}
          context = {'items': items, 'order': order}
          return render(request, 'store/checkout.html', context)    
+
+
+def updateItem(request):
+    
+    return JsonResponse('Item was added', safe=False)
 
 
 def categories(request):
