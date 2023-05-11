@@ -52,14 +52,45 @@
     }
     return cookieValue;
 }
-let csrftoken = getToken('csrftoken');
+
+var csrftoken = getToken('csrftoken')
+
+function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+        
+		 
         </script>
         {% endblock %}
         <title>Louis {% block extra_tittle %} {% endblock %}</title>
       </head>
      <header>
 
-    <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
+    <nav class="navbar navbar-expand-lg bg-black justify-content-center">
     <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">&nbsp; &nbsp; Louis</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

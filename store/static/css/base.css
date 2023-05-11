@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5 {
 }
 p {
     color: var(--font-color);
+    border-radius: 0%;
+}
+.btn {
+    background-color: var(--background-color);
 }
 .logo-font {
     color: var(--font-color-2);
