@@ -1,22 +1,28 @@
-$(document).on('click', '#add-button', function(e){
-    e.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: '{% url "cart-add" %}',
-        data: {
-            product_id: $('#add-button').val(),
-            product_quantity: $('#select option:selected').text(), 
-            csrfmiddlewaretoken: "{{csrf_token}}",
-            action: 'POST'
-        },
-        success: function(json){
-            console.log(json)
-           
-       
-        },
-        error: function(xhr, errmsg, err){
-        }
-        
-    });
-})
+let updateBtns = document.getElementsByClassName('update-cart')
+
+for(var i = 0; i < updateBtns.length; i++){
+    updateBtns[i].addEventListener('click', function(){
+        var productId = this.dataset.product
+        var action = this.dataset.action
+        console.log('productId:', productId, 'action:', action)
+    })
+}
+
+// for (i = 0; i < updateBtns.length; i++) {
+// 	updateBtns[i].addEventListener('click', function(){
+// 		let productId = this.dataset.product
+// 		let action = this.dataset.action
+// 		console.log('productId:', productId, 'Action:', action)
+// 		console.log('USER:', user)
+
+// 		if (user == 'AnonymousUser'){
+// 			addCookieItem(productId, action)
+// 		}else{
+// 			updateUserOrder(productId, action)
+// 		}
+// 	})
+// }
+
+
+
 console.log("This is base js")
