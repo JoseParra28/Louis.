@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # store app
     path('', include('store.urls')),
+    # shopping bag app
+    path('bag/', include('bag.urls')),
      # Allauth
     path('accounts/', include('allauth.urls')),
     
