@@ -11,11 +11,25 @@ from django.db.models import Q
 
 # --------------------- Main store view
 def store(request):
-	all_products  = Product.objects.all()
+    all_products  = Product.objects.all()
+    query = None
 
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You did not enter any valid search criteria")
+                return render(reverse('products'))
+
+            queries = Q(name_contains=query) | Q(description_contains=query)
+            all_products = all_products.filter(queries)   
+
+    context = {
+        'all_products': all_products,
+        'search_term': query
+    }
     
-	context = {'all_products': all_products}
-	return render(request, 'store/store.html', context)
+    return render(request, 'store/store.html', context)
     
 
 
@@ -68,4 +82,8 @@ def delete_item(request, itemm_id):
     item.delete()
     messages.info(request, 'Your review has been deleted.')
     return redirect('store')      
+
+
+
+    
 
