@@ -94,7 +94,15 @@
                     &nbsp; &nbsp; &nbsp;
                     <li class="nav-item">
                         <a type="button" role="button" href="{% url 'view_bag' %}" class="btn btn-outline-secondary"> 
-                            <i class="fa fa-shopping-cart" aria-hidden="true"> 0</i>
+                            <i class="fa fa-shopping-cart" aria-hidden="true">
+                                 <p class="my-0">
+                                    {% if grand_total %}
+                                        €{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        €0.00
+                                    {% endif %}
+                                </p>
+                            </i>
                             
                         </a>
                     </li>  
