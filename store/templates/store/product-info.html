@@ -34,7 +34,8 @@
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
-                            
+                            {% with pruduct.has_sizes as s %}
+                            {% if s %}
                                 <div class="col-12">
                                     <p><strong>Size:</strong></p>
                                     <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
@@ -44,8 +45,8 @@
                                         <option value="l">L</option>
                                         <option value="xl">XL</option>
                                     </select>
-                                </div>
-                           
+                                </div>                               
+                            {% endif %}
                             <div class="col-12">
                                 <p class="mt-3"><strong>Quantity:</strong></p>
                                 <div class="form-group w-50">
@@ -83,6 +84,7 @@
                                 <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            {% endwith %}
                             
                         </div>
                     </form>
@@ -122,5 +124,66 @@
 {% endif %}
 </div>
 <hr>
+{% block extra_js %}
+       
 
+<script type="text/javascript">
+    function handleEnableDisable(itemId, size) {
+        if (size) {
+            var currentValue = parseInt($(`.size_${itemId}_${size}`).val());
+        } else {
+            var currentValue = parseInt($(`.id_qty_${itemId}`).val());
+        }
+
+        var minusDisabled = currentValue < 2;
+        var plusDisabled = currentValue > 10;
+
+        if (size) {
+            $(`.decrement-size_${itemId}_${size}`).prop('disabled', minusDisabled);
+            $(`.increment-size_${itemId}_${size}`).prop('disabled', plusDisabled);
+        } else {
+            $(`.decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+            $(`.increment-qty_${itemId}`).prop('disabled', plusDisabled);
+        }
+    }
+    // Ensure proper enabling/disabling of all inputs on page load
+    var allQtyInputs = $('.qty_input');
+    for(var i = 0; i < allQtyInputs.length; i++){
+        var itemId = $(allQtyInputs[i]).data('item_id');
+        var size = $(allQtyInputs[i]).data('size');
+        handleEnableDisable(itemId, size);
+    }
+    // Increment quantity
+    $('.increment-qty').click(function(e) {
+       e.preventDefault();
+       var itemId = $(this).data('item_id');
+       var size = $(this).data('size');
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+       if (size) {
+          var allQuantityInputs = $(`.input-group-${itemId} input[data-size='${size}']`);
+       } else {
+          var allQuantityInputs = $(`.input-group-${itemId} input[name='quantity']`);
+       }
+       var currentValue = parseInt($(closestInput).val());
+       $(allQuantityInputs).val(currentValue + 1);
+       handleEnableDisable(itemId, size);
+    });
+
+    // Decrement quantity
+    $('.decrement-qty').click(function(e) {
+       e.preventDefault();
+       var itemId = $(this).data('item_id');
+       var size = $(this).data('size');
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+       if (size) {
+          var allQuantityInputs = $(`.input-group-${itemId} input[data-size='${size}']`);
+       } else {
+          var allQuantityInputs = $(`.input-group-${itemId} input[name='quantity']`);
+       }
+       var currentValue = parseInt($(closestInput).val());
+       $(allQuantityInputs).val(currentValue - 1);
+       handleEnableDisable(itemId, size);
+    });
+</script>
+{% endblock %}
 {% endblock %}
