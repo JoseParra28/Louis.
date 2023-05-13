@@ -99,7 +99,40 @@
 </div>
 <hr>
 <br>
+<div class="col-md-6 reviews">
+    <h1>Reviews</h1>
+    <h5><a href="{% url 'add-review' %}">Add a review</a></h5>
+<br>
+<hr>
+{% if not product.comments.all %}
+<h3>No reviews yet</h3>
+<a href="">Add a review</a>
 
+{% else %}
+
+   {% for comment in product.comments.all %}
+  
+   <strong><h4>{{ comment.name }} </h4></strong>
+   <h6><strong> {{ comment.created }}</strong></h6>
+   <br>
+   <h5><strong>{{ comment.product }}</strong></h5>
+   <h5><strong>{{ comment.subject }}</strong></h5>
+   <div class="rate">
+    <input type="radio" name="rating" id="rating5" value="5" required /><label for="rating5" title="2.5" class="half"></label>
+    <input type="radio" name="rating" id="rating4" value="4" required /><label for="rating4" title="2"></label>
+    <input type="radio" name="rating" id="rating3" value="3" required /><label for="rating3" title="1.5" class="half"></label>
+    <input type="radio" name="rating" id="rating2" value="2" required /><label for="rating2" title="1"></label>
+    <input type="radio" name="rating" id="rating1" value="1" required /><label for="rating1" title="0.5" class="half"></label>
+    <input type="radio" name="rating" id="rating1" value="0" required /><label for="rating0" title="0.0" class="half"></label>
+</div>
+<br>
+<p>{{ comment.comment }}</p>
+<br>
+<hr>
+{% endfor %}
+{% endif %}
+</div>
+<hr>
 {% block extra_js %}
        
 
@@ -163,28 +196,3 @@
 </script>
 {% endblock %}
 {% endblock %}
-<div class="col-md-6 reviews">
-    <h1>Reviews</h1>
-    <h5><a href="{% url 'add-review' %}">Add a review</a></h5>
-<br>
-<hr>
-{% if not product.comments.all %}
-<h3>No reviews yet</h3>
-<a href="">Add a review</a>
-
-{% else %}
-
-   {% for comment in product.comments.all %}
-   <strong><h4>{{ comment.name }} </h4></strong>
-   <h6><strong> {{ comment.created }}</strong></h6>
-   <br>
-   <h5><strong>{{ comment.product }}</strong></h5>
-   <h5><strong>{{ comment.subject }}</strong></h5>
-<br>
-<p>{{ comment.comment }}</p>
-<br>
-<hr>
-{% endfor %}
-{% endif %}
-</div>
-<hr>

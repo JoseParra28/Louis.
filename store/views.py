@@ -1,10 +1,10 @@
 from .models import *
 from django.http import HttpResponse
-
+from .forms import ReviewForm
 from .models import *
 from django.shortcuts import get_object_or_404, render, reverse
 from django.http import HttpResponse
-
+from .forms import ReviewForm
 from django.contrib import messages
 from django.db.models import Q
 
@@ -51,10 +51,37 @@ def category_list(request, category_slug=None):
     return render(request, 'store/category-list.html', {'category': category, 'products': products})
 
 
+# def add_review(request):
+#     return render(request, 'store/add-review.html')
 
 
+def add_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('store')
+    form = ReviewForm()
+    ctx = {'form': form}    
+    return render(request, 'store/add-review.html', ctx)
 
-    
+
+def edit_review(request, itemm_id):
+    item = get_object_or_404(Comment, id=itemm_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+        # return redirect('store')
+    form = ReviewForm(instance=item)
+    ctx = {'form': form}    
+    return render(request, 'store/add-review.html', ctx) 
+
+def delete_item(request, itemm_id):
+    item = get_object_or_404(Itemm, id=itemm_id)
+    item.delete()
+    messages.info(request, 'Your review has been deleted.')
+    return redirect('store')      
 
 
 
