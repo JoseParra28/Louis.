@@ -43,21 +43,19 @@ class Product(models.Model):
 
 
 
-class Comment(models.Model):
-    name = models.CharField(max_length=50)
-    product = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE)
-    subject = models.CharField(max_length=50, blank=True)
-    comment = models.TextField(max_length=150, blank=True)
-    rate = models.IntegerField(default=1)
-    created = models.DateTimeField(auto_now_add=True)
+class ReviewRating(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=100, blank=True)
+    review = models.TextField(max_length=500, blank=True)
+    rating = models.FloatField()
+    ip = models.CharField(max_length=20, blank=True)
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
-        
-        class CommentForm(models.Model):
-            class Meta:
-                model = Comment
-                fields = ['subject', 'comment', 'rate']
+        return self.subject
 
 
 

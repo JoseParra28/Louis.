@@ -99,31 +99,7 @@
 </div>
 <hr>
 <br>
-<div class="col-md-6 reviews">
-    <h1>Reviews</h1>
-    <h5><a href="{% url 'add-review' %}">Add a review</a></h5>
-<br>
-<hr>
-{% if not product.comments.all %}
-<h3>No reviews yet</h3>
-<a href="">Add a review</a>
 
-{% else %}
-
-   {% for comment in product.comments.all %}
-   <strong><h4>{{ comment.name }} </h4></strong>
-   <h6><strong> {{ comment.created }}</strong></h6>
-   <br>
-   <h5><strong>{{ comment.product }}</strong></h5>
-   <h5><strong>{{ comment.subject }}</strong></h5>
-<br>
-<p>{{ comment.comment }}</p>
-<br>
-<hr>
-{% endfor %}
-{% endif %}
-</div>
-<hr>
 {% block extra_js %}
        
 
@@ -187,3 +163,28 @@
 </script>
 {% endblock %}
 {% endblock %}
+<div class="col-md-6 reviews">
+    <h1>Reviews</h1>
+    <h5><a href="{% url 'add-review' %}">Add a review</a></h5>
+<br>
+<hr>
+{% if not product.comments.all %}
+<h3>No reviews yet</h3>
+<a href="">Add a review</a>
+
+{% else %}
+
+   {% for comment in product.comments.all %}
+   <strong><h4>{{ comment.name }} </h4></strong>
+   <h6><strong> {{ comment.created }}</strong></h6>
+   <br>
+   <h5><strong>{{ comment.product }}</strong></h5>
+   <h5><strong>{{ comment.subject }}</strong></h5>
+<br>
+<p>{{ comment.comment }}</p>
+<br>
+<hr>
+{% endfor %}
+{% endif %}
+</div>
+<hr>
