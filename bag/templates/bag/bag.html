@@ -53,9 +53,9 @@
                             <td class="py-3">
                                 <p class="my-0">{{ item.product.price }}</p>
                             </td>
-                            <td class="py-25">
-                                {% csrf_token %}
-                                <form class="form-update-form" action="" method="POST">
+                            <td class="py-25">               
+                                <form class="form-update-form"  method="POST">
+                                    {% csrf_token %}
                                     <div class="col-12">
                                         <p class="mt-3"><strong>Quantity:</strong></p>
                                         <div class="form-group">
@@ -84,7 +84,7 @@
                                     </div>
                                 </form>
                                 <a href="" class="update-link"><small>Update</small></a>
-                                <a href="" class="update-link float-right" id="{{ item.item_id }}"><small>remove</small></a>
+                                <a href="" class="update-link float-right" id="remove_{{ item.item_id }}"><small>remove</small></a>
                             </td>
                             <td class="py-3">
                                 <p><strong></strong>€ {{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -105,8 +105,7 @@
                    {% endif %}
                             </td>
                         </tr>
-                    </table>   
-                   
+                    </table>                     
                     <p class="lead mb-5">Your bag is empty.</p>
                     <a href="{% url 'store' %}" class="btn btn-outline-black rounded-0 btn-md">
                         <span class="icon">
@@ -209,3 +208,4 @@
 </script>
 {% endblock %}
 {% endblock %}
+action="{% url 'adjust_bag' item.item.id %}"

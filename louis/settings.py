@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'store',
     'bag',
+    'checkout',
     'crispy_forms',
 ]
 
@@ -89,6 +90,7 @@ TEMPLATES = [
     },
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 WSGI_APPLICATION = 'louis.wsgi.application'
 
 

@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="icon" sizes="100x100" type="image/x-icon" href="{% static 'media/logo.png' %}">
         {% endblock %}
     
         {% block extra_css %}
@@ -124,12 +125,14 @@
     </div>
     
 </header>
-    <body>
+<body>
+      
 
 
  {% block content %} 
         
 {% endblock %}
+
 
 {% block postloadjs %}
 
@@ -138,14 +141,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'javascript/base.js' %}"></script>
     
+<script type="text/javascript">
+    $('.toast').toast('show');
+</script>
 {% endblock %}
-    
-        
-
 
 </body>
-
-
 </html>
 
 
