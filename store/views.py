@@ -11,6 +11,7 @@ from django.db.models import Q
 
 # --------------------- Main store view
 def store(request):
+    request.session.set_expiry(0)
     all_products  = Product.objects.all()
     query = None
 
