@@ -116,5 +116,15 @@ label:hover ~ input:checked ~ label{
   color: #ffb503 !important;
 }
 
+/* ---------------------carossel slider */
+.carousel-inner {
+  display: flex;
+  justify-content: center;
+}
+.carossel-content {
+  z-index: 1;
+  margin-top: 20%;
+  margin-left: -30%;
+}
 
 

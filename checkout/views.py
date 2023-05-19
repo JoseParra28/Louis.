@@ -13,6 +13,7 @@ def checkout(request):
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
     return redirect(reverse('store'))
+    # return render(request, 'checkout/checkout.html')
 
     order_from = OrderForm()
     template = 'checkout/checkout.html'
@@ -20,3 +21,4 @@ def checkout(request):
         'order_from': order_from,
     }
     return render(request, template, context)
+    # return render(request, 'checkout/checkout.html')
